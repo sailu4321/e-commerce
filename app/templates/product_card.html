@@ -1,0 +1,20 @@
+<!-- templates/product_card.html -->
+<div class="col-md-4 mb-4">
+    <div class="card shadow rounded border-0 h-100">
+        <!-- Product Image -->
+       <img src="{{ url_for('static', filename= product.image) }}" class="card-img-top" height="200" style="object-fit: cover;">
+          
+        <!-- Card Body -->
+        <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <h6 class="text-success">₹{{ product.price }}</h6>
+           <form action="{{ url_for('main.add_to_cart', product_id=product.id) }}" method="POST">
+  <button type="submit" class="btn btn-outline-primary">Add to Cart</button>
+</form>
+
+
+           
+        </div>
+    </div>
+</div>

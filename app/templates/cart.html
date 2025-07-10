@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-5">🛒 Your Shopping Cart</h2>
+
+    {% if cart %}
+        <div class="row gy-4">
+            {% for item_id, item in cart.items() %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="{{ url_for('static', filename=item.image) }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover; border-radius: 12px 12px 0 0;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text mb-2"><strong>Price:</strong> ₹{{ item.price }}</p>
+                        <p class="card-text mb-2"><strong>Quantity:</strong> {{ item.quantity }}</p>
+                        <p class="card-text text-success fw-bold"><strong>Total:</strong> ₹{{ item.price * item.quantity }}</p>
+                        <form action="{{ url_for('main.remove_from_cart', product_id=item_id) }}" method="POST">
+                            <button type="submit" class="btn btn-sm btn-outline-danger mt-2">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-end mt-5">
+            <h4 class="text-success">Grand Total: ₹{{ total }}</h4>
+            <a href="/" class="btn btn-secondary mt-3">← Continue Shopping</a>
+            <a href="/checkout" class="btn btn-success mt-3 ms-2">Proceed to Checkout</a>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center mt-5">
+            <h4>Your cart is empty.</h4>
+            <a href="/" class="btn btn-primary mt-3">Start Shopping</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

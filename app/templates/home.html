@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .fullscreen-hero {
+    height: 100vh;
+    width: 100%;
+    background-image: url('https://t3.ftcdn.net/jpg/06/32/90/44/360_F_632904407_iPLi90WdjZ0oKAeRiL98gEIeHIUtzWae.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+  }
+
+  .fullscreen-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .fullscreen-hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .category-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+
+  .category-btn:hover {
+    background: linear-gradient(135deg, #6f42c1, #17a2b8);
+    transform: scale(1.05);
+    color: white !important;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+.rotate-3d-text {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+  animation: spin3D 6s linear infinite;
+  transform-style: preserve-3d;
+  display: inline-block;
+  perspective: 1000px;
+}
+
+@keyframes spin3D {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  25% {
+    transform: rotateY(90deg) rotateX(10deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(0deg);
+  }
+  75% {
+    transform: rotateY(270deg) rotateX(-10deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(0deg);
+  }
+}
+
+
+
+</style>
+
+<div class="fullscreen-hero">
+  <h1 class="rotate-3d-text">Welcome to Sailaja's E-Commerce Website</h1>
+
+  <p>Find amazing products at unbeatable prices</p>
+
+  <div class="btn-group">
+    <a href="{{ url_for('main.view_category', category='Accessories') }}" class="category-btn">Accessories</a>
+    <a href="{{ url_for('main.view_category', category='Shoes') }}" class="category-btn">Shoes</a>
+    <a href="{{ url_for('main.view_category', category='Clothing') }}" class="category-btn">Clothing</a>
+    <a href="{{ url_for('main.view_category', category='Electronics') }}" class="category-btn">Electronics</a>
+  </div>
+</div>
+{% endblock %}

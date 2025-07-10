@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="products-bg py-4">
+  <div class="container">
+    <h2 class="text-black mb-4"><center>Manage Products</center></h2>
+    <a href="{{ url_for('main.admin_add_product') }}" class="btn btn-success mb-3">+ Add New Product</a>
+    
+    <div class="row">
+      {% for product in products %}
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg animate__animated animate__zoomIn h-100">
+          <img src="{{ url_for('static', filename= product.image) }}" class="card-img-top" height="200" style="object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="fw-bold text-success">₹{{ product.price }}</p>
+            <form method="POST" action="{{ url_for('main.admin_delete_product', product_id=product.id) }}" onsubmit="return confirm('Are you sure?');" class="mt-auto">
+              <button type="submit" class="btn btn-danger w-100">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

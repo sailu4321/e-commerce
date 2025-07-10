@@ -1,0 +1,55 @@
+.home-background {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.product-card {
+    border: 2px solid #007bff;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+}
+/* Backgrounds */
+.add-bg {
+  background: linear-gradient(135deg, #1d2b64, #f8cdda);
+  min-height: 100vh;
+  color: white;
+}
+
+.products-bg {
+  background: linear-gradient(to right, #2b5876, #4e4376);
+  min-height: 100vh;
+  color: white;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.card {
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.03);
+}
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.card-body {
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="text-success">Checkout</h2>
+        <p class="text-muted">This is a <strong>simulated</strong> checkout page. No actual payment will be processed.</p>
+    </div>
+
+    {% if cart %}
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Order Summary</h5>
+                <ul class="list-group mb-3">
+                    {% for item_id, item in cart.items() %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ item.name }}</strong><br>
+                            Quantity: {{ item.quantity }} x ₹{{ item.price }}
+                        </div>
+                        <span class="fw-bold">₹{{ item.price * item.quantity }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <h5 class="text-end text-success">Grand Total: ₹{{ total }}</h5>
+
+                <form action="{{ url_for('main.place_order') }}" method="POST">
+    <button type="submit" class="btn btn-success px-4">Place Order</button>
+    <p class="text-muted mt-2 small">⚠️ This is a mock action — nothing will be charged.</p>
+</form>
+
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center">
+            Your cart is empty. <a href="/" class="alert-link">Continue shopping</a> to add products.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

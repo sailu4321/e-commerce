@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="add-bg d-flex justify-content-center align-items-center py-5">
+  <div class="card p-4 shadow-lg animate__animated animate__fadeInUp" style="width: 30rem;">
+    <h4 class="mb-3">Add New Product</h4>
+    <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}  <!-- ✅ Required for CSRF -->
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Product Name</label>
+        <input type="text" name="name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" name="price" class="form-control" step="0.01" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" class="form-control" rows="3" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <div class="mb-3">
+ 
+  <select name="category" class="form-control" required>
+    <option value="">-- Select Category --</option>
+    <option value="Accessories">Accessories</option>
+    <option value="Electronics">Electronics</option>
+    <option value="Shoes">Shoes</option>
+    <option value="Clothing">Clothing</option>
+  </select>
+</div>
+
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Product Image</label>
+        <input type="file" name="image" class="form-control" accept="image/*" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Add Product</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
